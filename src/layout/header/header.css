@@ -1,0 +1,32 @@
+header {
+  background-color: #3d3d3d; /* color de fondo */
+  padding: 20px; /* espacio de relleno */
+  text-align: center; /* alineación del contenido */
+  font-size: 24px; /* tamaño de letra */
+  font-weight: bold; /* peso de la letra */
+}
+
+.header .logo {
+  font-size: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.header nav {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  min-height: 60px;
+}
+
+.header nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+.header nav a:hover {
+  color: #b9b9b9;
+}
