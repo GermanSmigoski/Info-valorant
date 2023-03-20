@@ -1,17 +1,9 @@
 import React from "react";
+import "./footer.css";
 
 export const Footer = () => {
   return (
-    <footer
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        padding: "10px",
-        justifyItems: "center",
-        alignItems: "center",
-      }}
-      className="footer"
-    >
+    <footer className="footer">
       <p>© 2023 Valorant. Todos los derechos reservados.</p>
       <div className="redes">
         <a href="" className="github">
