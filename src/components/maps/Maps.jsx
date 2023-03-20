@@ -10,17 +10,20 @@ export const Maps = () => {
       .then((data) => setMaps(data.data));
   }, []);
 
+  console.log(maps);
+
   return (
     <div className="card-grid">
       {maps.map((map) => (
         <div className="card map-card">
           <div className="card-inner">
-            <div className="card-front" style={{backgroundImage:`${map.splash}`}}>
-              <img
-                className="card-img"
-                src={map.splash}
-                alt={map.displayName}
-              />
+            <div
+              className="card-front"
+              style={{
+                backgroundImage: "url(" + `${map.splash}` + ")",
+                backgroundSize: "cover",
+              }}
+            >
               <h2 className="card-title">{map.displayName}</h2>
             </div>
             <div className="card-back">
