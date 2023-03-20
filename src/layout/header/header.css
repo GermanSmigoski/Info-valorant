@@ -1,9 +1,9 @@
 header {
-  background-color: #3d3d3d; /* color de fondo */
-  padding: 20px; /* espacio de relleno */
-  text-align: center; /* alineación del contenido */
-  font-size: 24px; /* tamaño de letra */
-  font-weight: bold; /* peso de la letra */
+  background-color: #1f1f1f;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .header .logo {
@@ -21,12 +21,13 @@ header {
 }
 
 .header nav a {
-  color: #fff;
+  color: #ff3342;
   text-decoration: none;
   margin-left: 20px;
   font-size: 16px;
 }
 
 .header nav a:hover {
-  color: #b9b9b9;
+  color: #ffc1c5;
+  text-decoration: underline #ffc1c5;
 }

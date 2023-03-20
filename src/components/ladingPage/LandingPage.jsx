@@ -1,7 +1,8 @@
 import React from "react";
 import "./LandingPage.css";
+import { Link } from "react-router-dom";
 
-function LandingPage() {
+export const LandingPage = () => {
   return (
     <div className="landing-page">
       <section className="hero">
@@ -15,21 +16,27 @@ function LandingPage() {
         <h2>Características</h2>
         <ul className="feature-list">
           <li>
-            <h3>Personajes</h3>
+            <Link to="/personajes">
+              <h3>Personajes</h3>
+            </Link>
             <p>
               Conoce a los personajes más interesantes de Valorant y sus
               habilidades únicas.
             </p>
           </li>
           <li>
-            <h3>Mapas</h3>
+            <Link to="/mapas">
+              <h3>Mapas</h3>
+            </Link>
             <p>
               Explora los mapas más fascinantes de Valorant y aprende a
               dominarlos.
             </p>
           </li>
           <li>
-            <h3>Armas</h3>
+            <Link to="/armas">
+              <h3>Armas</h3>
+            </Link>
             <p>
               Descubre las armas más poderosas de Valorant y aprende a
               utilizarlas.
@@ -37,15 +44,6 @@ function LandingPage() {
           </li>
         </ul>
       </section>
-      <section className="cta">
-        <h2>¿Listo para unirte?</h2>
-        <button>Regístrate ahora</button>
-      </section>
-      <footer className="footer">
-        <p>© 2023 Valorant. Todos los derechos reservados.</p>
-      </footer>
     </div>
   );
-}
-
-export default LandingPage;
+};

@@ -1,0 +1,11 @@
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-back img {
+  background-size: cover;
+  width: 250px;
+  height: 250px;
+}

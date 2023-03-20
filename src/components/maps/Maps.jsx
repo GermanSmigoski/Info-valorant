@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import "./Maps.css";
 
-function Maps() {
+export const Maps = () => {
   const [maps, setMaps] = useState([]);
 
   useEffect(() => {
@@ -10,11 +11,11 @@ function Maps() {
   }, []);
 
   return (
-    <div>
+    <div className="card-grid">
       {maps.map((map) => (
         <div className="card map-card">
           <div className="card-inner">
-            <div className="card-front">
+            <div className="card-front" style={{backgroundImage:`${map.splash}`}}>
               <img
                 className="card-img"
                 src={map.splash}
@@ -23,6 +24,7 @@ function Maps() {
               <h2 className="card-title">{map.displayName}</h2>
             </div>
             <div className="card-back">
+              <img src={map.displayIcon} alt={map.displayName}></img>
               <h2 className="card-title">{map.displayName}</h2>
               <p>{map.description}</p>
             </div>
@@ -31,6 +33,4 @@ function Maps() {
       ))}
     </div>
   );
-}
-
-export default Maps;
+};

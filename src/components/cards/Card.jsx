@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Card.css";
 
-const Card = () => {
+export const Card = () => {
   const [agents, setAgents] = useState([]);
 
   useEffect(() => {
@@ -37,4 +37,3 @@ const Card = () => {
   );
 };
 
-export default Card;

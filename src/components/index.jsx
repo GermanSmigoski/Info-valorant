@@ -1,2 +1,3 @@
-export * from "./cards/cards";
-export * from "./charactercs/characters";
+export * from "./cards/Card";
+export * from "./ladingPage/LandingPage";
+export * from "./maps/Maps";

@@ -11,6 +11,7 @@ export const Header = () => {
           <Link to="/mapas">Mapas</Link>
           <Link to="/">Inicio</Link>
           <Link to="/armas">Armas</Link>
+          <Link to="/leaderBoard">Leader Board</Link>
           <Link to="/contacto">Contacto</Link>
         </nav>
       </header>
