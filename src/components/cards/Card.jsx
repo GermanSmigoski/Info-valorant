@@ -17,9 +17,9 @@ export const Card = () => {
   }, []);
 
   return (
-    <div class="card-grid">
+    <div className="card-grid">
       {agents.map((agent) => (
-        <div className="card">
+        <div key={agent.uuid} className="card">
           <div className="card-inner">
             <div className="card-front">
               <img className="card-img" src={agent.displayIcon} alt="" />
@@ -36,4 +36,3 @@ export const Card = () => {
     </div>
   );
 };
-

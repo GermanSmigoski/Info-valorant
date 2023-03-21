@@ -35,25 +35,29 @@
 }
 
 .card-front {
-  background-color: #001529;
+  background-color: #1f1f1f;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: #ff3342;
   transform: rotateY(0deg);
   transition: transform 0.6s;
 }
 
 .card-back {
-  background-color: #001529;
+  background-color: #1f1f1f;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: #f7e9e9;
   transform: rotateY(180deg);
   transition: transform 0.6s;
+}
+
+.card-back h2{
+  color:#ff3342
 }
 
 .card-img {
