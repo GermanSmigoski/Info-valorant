@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import './skins.css'
 
 export const Skins = () => {
   const { typeWeapon } = useParams();
@@ -28,10 +29,10 @@ export const Skins = () => {
   return (
     <div className="card-grid">
       {skins?.map((skin) => (
-        <div className="card map-card" key={skin.uuid}>
+        <div className="card-skin" key={skin.uuid}>
           <p>{skin.displayName}</p>
           <img
-            src={skin.displayIcon ? skin.displayIcon : ""}
+            src={skin.displayIcon ? skin.chromas[0].fullRender : ""}
             alt={skin.displayName}
           />
         </div>
