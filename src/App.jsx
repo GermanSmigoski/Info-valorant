@@ -12,7 +12,7 @@ function App() {
         <Route exact path="/personajes" element={<Card />} />
         <Route exact path="/armas" element={<Weapons />} />
         {/* <Route exact path="/leaderBoard" element={<LeaderBoard/>} />*/}
-        <Route exact path="skins" element={<Skins />} />
+        <Route exact path="/:typeWeapon/skins" element={<Skins />} />
       </Routes>
       <Footer />
     </BrowserRouter>

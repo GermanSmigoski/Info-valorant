@@ -19,7 +19,7 @@ export const Weapons = () => {
     <div className="card-grid">
       {weapons.map((weapon) => (
         <div key={weapon.uuid}>
-          <Link to={`/${weapon.displayName}`}>
+          <Link to={`/${weapon.displayName}/skins`}>
             <h2>{weapon.displayName}</h2>
           </Link>
           <img src={weapon.displayIcon} alt={weapon.displayName}></img>
