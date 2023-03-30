@@ -124,3 +124,24 @@ h6 {
 .footer a:hover {
   color: #fff;
 }
+
+.feature-list {
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.feature-list h3 {
+  text-decoration: none;
+  color: #f3f3f3;
+}
+
+.feature-list h3:hover {
+  color: #ff4655;
+}
+
+.features h2{
+  color: #ff4655;
+}

@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Card, Maps, LandingPage, Weapons, Skins, LeaderBoard } from "./components";
+import { AboutMe } from "./components/aboutMe/About";
 import { Header, Footer } from "./layout";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route exact path="/armas" element={<Weapons />} />
         <Route exact path="/leaderBoard" element={<LeaderBoard/>} />
         <Route exact path="/:typeWeapon/skins" element={<Skins />} />
+        <Route exact path="/sobreMi" element={<AboutMe/>} />
       </Routes>
       <Footer />
     </BrowserRouter>
