@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./skins.css";
 
 export const Skins = () => {
@@ -26,6 +26,9 @@ export const Skins = () => {
 
   return (
     <div className="card-grid">
+      <Link to="/armas">
+      <img className="backArrow" src="/arrow.png" alt="arrowBack"/>
+      </Link>
       {skins?.map((skin) => (
         <div className="card-skin" key={skin.uuid}>
           <p>{skin.displayName}</p>

@@ -6,11 +6,13 @@ export const LandingPage = () => {
   return (
     <div className="landing-page">
       <section className="hero">
-        <h1>¡Bienvenido a Valorant!</h1>
-        <p>
-          Descubre los personajes, mapas y armas más impresionantes del juego.
-        </p>
-        <button>Regístrate ahora</button>
+        <div className="landingInfo"> 
+          <h1>¡Bienvenido a Valorant!</h1>
+          <p>
+            Descubre los personajes, mapas y armas más impresionantes del juego.
+          </p>
+          {/* <button>Regístrate ahora</button> */}
+        </div>
       </section>
       <section className="features">
         <h2>Características</h2>

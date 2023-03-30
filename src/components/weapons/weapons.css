@@ -9,6 +9,7 @@
     align-items: center;
     flex-direction: column;
     margin: 1rem;
+    background: #292828 ;
 }
 
 .card-weapon img{
@@ -18,4 +19,10 @@
 
 .card-weapon a{
     text-decoration: none;
+    color: #cc1e3b;
+}
+
+.card-weapon a:hover{
+    color: #a7132c;
+    text-decoration: underline #a7132c;
 }
