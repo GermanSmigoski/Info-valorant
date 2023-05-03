@@ -1,0 +1,40 @@
+header {
+  background-color: #1f1f1f;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  border: 1px solid #0f0f0f;
+}
+
+.header .logo {
+  font-size: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.header nav {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  min-height: 50px;
+}
+
+.header nav a {
+  color: #ff3342;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+.header nav a:hover {
+  color: #ffc1c5;
+  text-decoration: underline #ffc1c5;
+}
+
+@media (max-width: 767px) {
+  .header nav {
+    display: none;
+  }
+}
