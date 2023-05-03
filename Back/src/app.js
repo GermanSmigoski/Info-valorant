@@ -4,11 +4,11 @@ const cors = require("cors");
 const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
+const routes = require("./routes/index");
 
 const server = express();
 
-
-server.use('/', routes)
+server.use("/", routes);
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 server.use(bodyParser.json({ limit: "50mb" }));
 server.use(cors());
