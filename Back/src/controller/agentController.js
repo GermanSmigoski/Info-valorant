@@ -1,11 +1,10 @@
 const axios = require("axios");
 
 const getApiAgents = async () => {
+  const agents = [];
   const apicall = await axios.get(
     "https://valorant-api.com/v1/agents?language=es-MX&isPlayableCharacter=true"
   );
-
-  const agents = [];
 
   apicall.data.map((agent) => {
     agent.push({

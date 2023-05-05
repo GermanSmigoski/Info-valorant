@@ -1,5 +1,8 @@
 const { Router } = require("express");
-const { getAllAgents, getAgentId } = require("../../controller/agent");
+const {
+  getAllAgents,
+  getAgentId,
+} = require("../../controller/agentController");
 const router = Router();
 
 router.get("/", getAllAgents);
