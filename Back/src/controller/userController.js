@@ -65,7 +65,7 @@ module.exports = {
     const { error } = schemaLogin.validate(req.body);
     const user = await User.findOne({ where: { email: email } });
     const token = jwt.sign(
-      { name: user?.name, id: user?.id },
+      { name: user?.name, id: user?.id, email: email },
       process.env.SECRET_TOKEN
     );
     try {
@@ -75,9 +75,20 @@ module.exports = {
       const passwordValidated = await bcrypt.compare(password, user.password);
       if (!passwordValidated)
         return res.status(400).send("Invalid credentials");
-      res.send("User access");
+      res.send({ token: token, message: "User logged" });
     } catch (e) {
       res.status(404).send(e);
+    }
+  },
+  deleteUser: async (req, res) => {
+    const id = req.params.id;
+    try {
+      const user = await User.findOne(id);
+      if (!user) return res.status(404).send("User not found");
+      await user.destroy();
+      res.status(200).send("User deleted succesfully");
+    } catch (e) {
+      res.status(500).send(e);
     }
   },
 };

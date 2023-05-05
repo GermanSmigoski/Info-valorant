@@ -41,13 +41,10 @@ sequelize
     console.error("Error al conectar a la base de datos:", error);
   });
 
-const { User, Weapons, Agents, Maps } = sequelize.models;
+const { User } = sequelize.models;
 
 module.exports = {
   User,
-  Weapons,
-  Agents,
-  Maps,
   ...sequelize.models,
   conn: sequelize,
 };
