@@ -5,8 +5,6 @@ import "./skins.css";
 
 export const Skins = () => {
   const { typeWeapon } = useParams();
-  const [skins, setSkins] = useState([]);
-  const url = "https://valorant-api.com/v1/weapons/skins";
   const tipoDeArma = typeWeapon;
 
   useEffect(() => {

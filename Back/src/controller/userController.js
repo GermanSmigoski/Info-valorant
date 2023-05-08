@@ -91,4 +91,17 @@ module.exports = {
       res.status(500).send(e);
     }
   },
+  logoutUser: async (req, res) => {
+    try {
+      req.session.destroy((err) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.redirect("/user/login");
+        }
+      });
+    } catch (e) {
+      res.status(500).send(e);
+    }
+  },
 };

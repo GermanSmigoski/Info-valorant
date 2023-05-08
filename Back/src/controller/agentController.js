@@ -3,7 +3,7 @@ const axios = require("axios");
 const getApiAgents = async () => {
   const agents = [];
   const apicall = await axios.get(
-    "https://valorant-api.com/v1/agents?language=es-MX&isPlayableCharacter=true"
+    `${API_URL}/agents?language=es-MX&isPlayableCharacter=true`
   );
 
   apicall.data.map((agent) => {
@@ -29,13 +29,13 @@ module.exports = {
       res.status(500).send(e);
     }
   },
-  getAgentId: async (req, res) => {
-    const id = req.params.id;
+  getAgentName: async (req, res) => {
+    const name = req.params.name;
     try {
       const agents = await getApiAgents();
-      if (!id) return res.status(400).send("Agent not Found");
-      if (id) {
-        let agentById = await agents.filter((agent) => agent.id == id);
+      if (!name) return res.status(404).send("Agent not Found");
+      if (name) {
+        let agentById = await agents.filter((agent) => agent.name == name);
         res.status(200).send(agentById);
       }
     } catch (e) {

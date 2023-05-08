@@ -5,24 +5,22 @@ function filtrarSkinsPorArma(skins, tipoArma) {
 }
 
 const getWeaponsApi = async () => {
-  const weapons = [];
-  const apiCall = await axios.get("https://valorant-api.com/v1/weapons");
+  const apiCall = await axios.get(`${API_URL}/weapons`);
 
-  apiCall.data.map((weapon) => {
-    weapons.push({
-      uuid: weapon.uuid,
-      displayName: weapon.displayName,
-      cost: weapon.shopData.map((w) => w.cost),
-      category: weapon.shopData.map((c) => c.category),
-    });
-  });
-  return agents;
+  const weapons = apiCall.data.map((weapon) => ({
+    uuid: weapon.uuid,
+    displayName: weapon.displayName,
+    cost: weapon.shopData.map((w) => w.cost),
+    category: weapon.shopData.map((c) => c.category),
+  }));
+
+  return weapons;
 };
+
 module.exports = {
   getAllWeapons: async (req, res) => {
     try {
       const weapons = await getWeaponsApi();
-      if (!weapons) return res.status(404).send("Weapons not found");
       res.status(200).send(weapons);
     } catch (e) {
       res.status(400).send(e);
@@ -43,9 +41,7 @@ module.exports = {
   },
   getWeaponSkins: async (req, res) => {
     const typeWeapons = req.params.type;
-    const skinsCall = await axios.get(
-      "https://valorant-api.com/v1/weapons/skins"
-    );
+    const skinsCall = await axios.get(`${API_URL}/weapons/skins`);
     const skins = skinsCall.data;
     const filteredSkins = filtrarSkinsPorArma(skins, typeWeapons);
     try {

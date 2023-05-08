@@ -1,8 +1,8 @@
 import React from "react";
-import "./LandingPage.css";
+import "./home.css";
 import { Link } from "react-router-dom";
 
-export const LandingPage = () => {
+export const Home = () => {
   return (
     <div className="landing-page">
       <section className="hero">

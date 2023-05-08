@@ -1,11 +1,11 @@
 const { Router } = require("express");
 const {
   getAllAgents,
-  getAgentId,
+  getAgentName,
 } = require("../../controller/agentController");
 const router = Router();
 
 router.get("/", getAllAgents);
-router.get("/:id", getAgentId);
+router.get("/:name", getAgentName);
 
 module.exports = router;
