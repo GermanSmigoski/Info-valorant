@@ -25,7 +25,7 @@ export const Landing = () => {
         similique adipisci doloremque? Minima! Lorem ipsum dolor sit, amet
         consectetur adipisicing elit. Dicta quis eligendi, magnam et veritatis
         similique quidem facilis corrupti sit aspernatur optio quisquam dolor
-        cumque cupiditate eum necessitatibus blanditiis, ducimus repellendus.
+        cumque cupiditate eum necessitatibus blanditiis, ducimus repellendus.asd
       </div>
       <div className="landing-butts">
         <>
