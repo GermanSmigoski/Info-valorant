@@ -1,16 +1,19 @@
-import { react, useState } from "react";
+import React, { useState } from "react";
 import { LoginForm, Register } from "../index";
 import "./landing.css";
 
 export const Landing = () => {
   const [showLogin, setShowLogin] = useState(null);
+  const [displayNone, setDisplayNone] = useState(false);
 
   const handleLoginClick = () => {
     setShowLogin(true);
+    setDisplayNone(true);
   };
 
   const handleRegisterClick = () => {
     setShowLogin(false);
+    setDisplayNone(true);
   };
 
   return (
@@ -24,11 +27,34 @@ export const Landing = () => {
         similique quidem facilis corrupti sit aspernatur optio quisquam dolor
         cumque cupiditate eum necessitatibus blanditiis, ducimus repellendus.
       </div>
-      <div className="lading-butts">
-        {showLogin === true && <LoginForm />}
-        {showLogin === false && <Register />}
-        <button onClick={handleLoginClick}>Login</button>
-        <button onClick={handleRegisterClick}>Register</button>
+      <div className="landing-butts">
+        <>
+          <button
+            className={displayNone ? "selected" : ""}
+            onClick={handleLoginClick}
+          >
+            Login
+          </button>
+          <button
+            className={displayNone ? "selected" : ""}
+            onClick={handleRegisterClick}
+          >
+            Register
+          </button>
+        </>
+
+        {showLogin === true && (
+          <>
+            <LoginForm />
+            <button onClick={handleRegisterClick}>Register</button>
+          </>
+        )}
+        {showLogin === false && (
+          <>
+            <Register />
+            <button onClick={handleLoginClick}>Login</button>
+          </>
+        )}
       </div>
     </div>
   );
