@@ -75,7 +75,7 @@ module.exports = {
       const passwordValidated = await bcrypt.compare(password, user.password);
       if (!passwordValidated)
         return res.status(400).send("Invalid credentials");
-      res.send({ token: token, message: "User logged" });
+      res.send({ token: token, message: "User logged" }).header("auth-token");
     } catch (e) {
       res.status(404).send(e);
     }

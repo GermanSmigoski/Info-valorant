@@ -5,7 +5,10 @@ import "./skins.css";
 
 export const Skins = () => {
   const { typeWeapon } = useParams();
+  const [skins, setSkins] = useState([]);
+  const url = "https://valorant-api.com/v1/weapons/skins";
   const tipoDeArma = typeWeapon;
+  console.log(tipoDeArma);
 
   useEffect(() => {
     axios
@@ -21,17 +24,20 @@ export const Skins = () => {
   function filtrarSkinsPorArma(skins, tipoArma) {
     return skins.filter((skin) => skin.displayName?.includes(tipoArma));
   }
-
   return (
     <div className="card-grid">
       <Link to="/armas">
-      <img className="backArrow" src="/arrow.png" alt="arrowBack"/>
+        <img className="backArrow" src="/arrow.png" alt="arrowBack" />
       </Link>
       {skins?.map((skin) => (
         <div className="card-skin" key={skin.uuid}>
           <p>{skin.displayName}</p>
           <img
-            src={skin.chromas[0] ? skin.chromas[0]?.fullRender : skin.chromas[0]?.displayIcon}
+            src={
+              skin.chromas[0]
+                ? skin.chromas[0]?.fullRender
+                : skin.chromas[0]?.displayIcon
+            }
             alt={skin.displayName}
           />
           {console.log(skin.chromas)}

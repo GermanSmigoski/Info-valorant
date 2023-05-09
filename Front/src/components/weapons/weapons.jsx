@@ -5,6 +5,16 @@ import "./weapons.css";
 export const Weapons = () => {
   const [weapons, setWeapons] = useState([]);
 
+  useEffect(() => {
+    axios
+      .get("https://valorant-api.com/v1/weapons")
+      .then((res) => {
+        setWeapons(res.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <div className="card-grid">
       <Link to="/">

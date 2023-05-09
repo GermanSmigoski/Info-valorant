@@ -1,13 +1,23 @@
 import { react, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUser } from "../../Redux/Actions";
+import { useNavigate } from "react-router-dom";
 import "./register.css";
+
 export const Register = () => {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Aquí podrías enviar los datos del formulario al servidor usando las acciones que ya tienes implementadas
+    console.log(user);
+    console.log("submit hecho");
+    dispatch(registerUser(name, email, password));
+    navigate("/home");
   };
 
   return (
