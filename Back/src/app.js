@@ -7,11 +7,14 @@ const morgan = require("morgan");
 const routes = require("./routes/index");
 
 const server = express();
-
-server.use("/", routes);
+const corsOptions = {
+  origin: "http://localhost:5173",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+server.use(cors(corsOptions));
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 server.use(bodyParser.json({ limit: "50mb" }));
-server.use(cors());
 server.use(cookieParser());
 server.use(helmet());
 server.use(morgan("dev"));
@@ -25,6 +28,7 @@ server.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
   next();
 });
+server.use("/", routes);
 
 server.use((err, req, res, next) => {
   const status = err.status || 500;

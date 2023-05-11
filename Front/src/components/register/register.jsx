@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { registerUser } from "../../Redux/Actions";
 import { useNavigate } from "react-router-dom";
 import "./register.css";
 
 export const Register = () => {
-  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [newUser, setNewUser] = useState({
     name: "",

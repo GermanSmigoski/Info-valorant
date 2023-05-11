@@ -8,7 +8,6 @@ export const Skins = () => {
   const [skins, setSkins] = useState([]);
   const url = "https://valorant-api.com/v1/weapons/skins";
   const tipoDeArma = typeWeapon;
-  console.log(tipoDeArma);
 
   useEffect(() => {
     axios
@@ -22,8 +21,47 @@ export const Skins = () => {
   }, []);
 
   function filtrarSkinsPorArma(skins, tipoArma) {
-    return skins.filter((skin) => skin.displayName?.includes(tipoArma));
+    const meleeKnife = [
+      "Blade",
+      "Claw",
+      "Hammer",
+      "Karambit",
+      "Axe",
+      "Dagger",
+      "Sword",
+      "Butterfly",
+      "Melee",
+      "Knife",
+      "Neptune Anchor",
+      "Araxys Bio Harvester",
+      "Power Fist",
+      "Wrath",
+      "Waveform",
+      "Obsidiana",
+      "Onimaru Kunitsuna",
+      "Cane",
+      "Hu Else",
+      "Mace",
+      "Balisong",
+      "Prosperity",
+      "Wand",
+      "Relic of the Sentinel",
+      "Baton",
+      "Luna's Descent",
+      "Artisan Foil",
+      "Drill",
+    ];
+    if (tipoArma === "Melee") {
+      return skins.filter((skin) => {
+        return meleeKnife.some((knife) => skin.displayName?.includes(knife));
+      });
+    } else {
+      return skins.filter((skin) => {
+        return skin.displayName?.toLowerCase().includes(tipoArma.toLowerCase());
+      });
+    }
   }
+
   return (
     <div className="card-grid">
       <Link to="/armas">

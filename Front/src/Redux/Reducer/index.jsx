@@ -1,26 +1,16 @@
 const intialState = {
   user: [],
+  weapons: [],
 };
 
 const rootReducer = (state = intialState, action) => {
   switch (action.type) {
-    case "GET_USER":
+    case "GET_WEAPONS": {
       return {
         ...state,
-        user: action.payload,
+        weapons: action.payload,
       };
-    case "REGISTER_USER":
-      return {
-        ...state,
-      };
-    case "LOGIN_USER":
-      return {
-        ...state,
-      };
-    case "LOGOUT_USER":
-      return {
-        ...state,
-      };
+    }
     default:
       return state;
   }
