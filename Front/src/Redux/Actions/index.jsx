@@ -33,3 +33,42 @@ export const getWeaponsName = (name) => async (dispatch) => {
     });
   }
 };
+
+// User
+
+export const registerUser = (name, email, password) => async (dispatch) => {
+  try {
+    let response = await axios.post(`http://localhost:4000/user/register`, {
+      name,
+      email,
+      password,
+    });
+    dispatch({
+      type: "USER_REGISTER",
+      payalod: response,
+    });
+  } catch (e) {
+    dispatch({
+      type: "USER_REGISTER_ERROR",
+      payload: "Error al registrar usuario.",
+    });
+  }
+};
+
+export const loginUser = (email, password) => async (dispatch) => {
+  try {
+    let response = await axios.post("http://localhost:4000/user/login", {
+      email,
+      password,
+    });
+    dispatch({
+      type: "USER_LOGIN",
+      payolad: response,
+    });
+  } catch (e) {
+    dispatch({
+      type: "USER_LOGIN_ERROR",
+      payaload: "Error al logearse",
+    });
+  }
+};

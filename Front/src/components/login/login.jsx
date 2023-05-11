@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { loginUser } from "../../Redux/Actions";
 import "./login.css";
 
 export const LoginForm = () => {
@@ -13,8 +14,8 @@ export const LoginForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(loginUser(user));
-    navigate("/");
+    dispatch(loginUser(user.email, user.password));
+    navigate("/home");
   };
 
   const handleChange = (e) => {

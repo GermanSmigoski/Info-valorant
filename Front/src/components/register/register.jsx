@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { registerUser } from "../../Redux/Actions";
 import "./register.css";
 
 export const Register = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [newUser, setNewUser] = useState({
     name: "",
-    password: "",
     email: "",
+    password: "",
   });
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setNewUser({
@@ -21,11 +22,11 @@ export const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(registerUser(newUser));
+    dispatch(registerUser(newUser.name, newUser.email, newUser.password));
     setNewUser({
       name: "",
-      password: "",
       email: "",
+      password: "",
     });
     navigate("/");
   };
@@ -43,7 +44,6 @@ export const Register = () => {
           autoComplete="name"
           onChange={(e) => handleChange(e)}
         />
-
         <label htmlFor="email">Correo electrónico:</label>
         <input
           type="email"
@@ -53,7 +53,6 @@ export const Register = () => {
           value={newUser.email}
           onChange={(e) => handleChange(e)}
         />
-
         <label htmlFor="password">Contraseña:</label>
         <input
           type="password"
@@ -63,7 +62,6 @@ export const Register = () => {
           value={newUser.password}
           onChange={(e) => handleChange(e)}
         />
-
         <button type="submit">Registrarse</button>
       </form>
     </div>

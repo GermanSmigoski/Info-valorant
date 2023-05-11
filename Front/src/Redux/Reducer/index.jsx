@@ -11,6 +11,18 @@ const rootReducer = (state = intialState, action) => {
         weapons: action.payload,
       };
     }
+    case "USER_REGISTER": {
+      return {
+        ...state,
+        user: action.payload,
+      };
+    }
+    case "USER_LOGIN": {
+      return {
+        ...state,
+        user: action.payload,
+      };
+    }
     default:
       return state;
   }
