@@ -30,6 +30,15 @@ module.exports = {
   },
   registerUser: async (req, res) => {
     let { name, password, email } = req.body;
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, OPTIONS, PUT, DELETE"
+    );
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "X-Requested-With,content-type"
+    );
     const schemaRegister = Joi.object({
       name: Joi.string().min(6).max(255).required(),
       email: Joi.string().min(6).max(255).required().email(),

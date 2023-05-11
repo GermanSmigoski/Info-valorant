@@ -17,7 +17,12 @@ export const fetchUsers = () => async (dispatch) => {
 
 export const registerUser = (userData) => async (dispatch) => {
   try {
-    const res = await axios.post(`${URL}/user/register`, userData);
+    const res = await axios.post(`${URL}/user/register`, userData, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
+    console.log(userData);
     dispatch({ type: REGISTER_USER, payload: res.data });
   } catch (error) {
     console.log(error);
@@ -26,13 +31,29 @@ export const registerUser = (userData) => async (dispatch) => {
 
 export const loginUser = (email, password) => async (dispatch) => {
   try {
-    const response = await axios.response.data;
+    const response = await axios.post(
+      `${URL}/user/login`,
+      { email, password },
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
+    const { token, user } = response.data;
     localStorage.setItem("token", token);
-    post("/user/login", { email, password });
-    const { token, user } = r;
     dispatch({ type: LOGIN_USER, payload: user });
   } catch (error) {
-    console.log(error);
+    if (error.response) {
+      // Se recibió una respuesta de error desde el servidor
+      console.log(error.response.data);
+    } else if (error.request) {
+      // No se recibió respuesta del servidor
+      console.log(error.request);
+    } else {
+      // Ocurrió un error durante la petición
+      console.log("Error", error.message);
+    }
   }
 };
 

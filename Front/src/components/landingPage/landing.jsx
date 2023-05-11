@@ -44,16 +44,18 @@ export const Landing = () => {
         </>
 
         {showLogin === true && (
-          <>
+          <div className="login-form">
             <LoginForm />
-            <button onClick={handleRegisterClick}>Register</button>
-          </>
+            <button className="unico" onClick={handleRegisterClick}>
+              Register
+            </button>
+          </div>
         )}
         {showLogin === false && (
-          <>
+          <div className="register-form">
             <Register />
             <button onClick={handleLoginClick}>Login</button>
-          </>
+          </div>
         )}
       </div>
     </div>

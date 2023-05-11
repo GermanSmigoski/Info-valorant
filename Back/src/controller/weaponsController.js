@@ -5,14 +5,16 @@ function filtrarSkinsPorArma(skins, tipoArma) {
 }
 
 const getWeaponsApi = async () => {
-  const apiCall = await axios.get(`${API_URL}/weapons`);
+  const response = await axios.get("https://valorant-api.com/v1/weapons");
 
-  const weapons = apiCall.data.map((weapon) => ({
-    uuid: weapon.uuid,
-    displayName: weapon.displayName,
-    cost: weapon.shopData.map((w) => w.cost),
-    category: weapon.shopData.map((c) => c.category),
-  }));
+  const weapons = response.data.data.map((weapon) => {
+    return {
+      id: weapon.uuid,
+      displayName: weapon.displayName,
+      cost: weapon.shopData?.cost,
+      category: weapon.shopData?.category,
+    };
+  });
 
   return weapons;
 };
@@ -27,14 +29,15 @@ module.exports = {
     }
   },
   getWeaponById: async (req, res) => {
-    const id = req.params.id;
+    const name = req.params.name;
     try {
       const weapons = await getWeaponsApi();
-      if (!id) return res.status(404).send("Weapon not found");
-      if (id) {
-        let weaponById = await weapons.filter((weapon) => weapon.id == id);
-        res.status(200).send(weaponById);
-      }
+      if (!name) return res.status(404).send("Weapon not found");
+
+      const weaponByName = weapons.find(
+        (weapon) => weapon.displayName.toLowerCase() == name.toLowerCase()
+      );
+      res.status(200).send(weaponByName);
     } catch (e) {
       res.status(400).send(e);
     }

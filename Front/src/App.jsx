@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
   Card,
@@ -14,8 +13,6 @@ import { AboutMe } from "./Components/aboutMe/About";
 import { Header, Footer } from "./layout";
 
 function App() {
-  const user = useSelector((state) => state.user);
-
   return (
     <BrowserRouter>
       <Header />

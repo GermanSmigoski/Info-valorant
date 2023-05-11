@@ -27,7 +27,10 @@ export const Maps = () => {
               <h2 className="card-title">{map.displayName}</h2>
             </div>
             <div className="card-back">
-              <img src={map.displayIcon ? map.displayIcon : ''} alt={map.displayName ? map.displayName : '' }></img>
+              <img
+                src={map.displayIcon ? map.displayIcon : ""}
+                alt={map.displayName ? map.displayName : ""}
+              ></img>
               <h2 className="card-title">{map.displayName}</h2>
               <p>{map.description}</p>
             </div>

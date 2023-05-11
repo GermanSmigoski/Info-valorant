@@ -1,0 +1,16 @@
+{
+    "oneDarkPro.vivid": true,
+    "oneDarkPro.bold": true,
+    "oneDarkPro.editorTheme": "One Dark Pro Darker",
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "valorant_info",
+            "username": "postgres",
+            "database": "valorantinfo"
+        }
+    ]
+}

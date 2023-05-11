@@ -1,4 +1,4 @@
-import { react, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../Redux/Actions";
 import { useNavigate } from "react-router-dom";
@@ -7,17 +7,29 @@ import "./register.css";
 export const Register = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [newUser, setNewUser] = useState({
+    name: "",
+    password: "",
+    email: "",
+  });
   const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setNewUser({
+      ...newUser,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(user);
-    console.log("submit hecho");
-    dispatch(registerUser(name, email, password));
-    navigate("/home");
+    dispatch(registerUser(newUser));
+    setNewUser({
+      name: "",
+      password: "",
+      email: "",
+    });
+    navigate("/");
   };
 
   return (
@@ -27,28 +39,31 @@ export const Register = () => {
         <label htmlFor="name">Nombre:</label>
         <input
           type="text"
-          id="name"
           name="name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
+          id="name"
+          value={newUser.name}
+          autoComplete="name"
+          onChange={(e) => handleChange(e)}
         />
 
         <label htmlFor="email">Correo electrónico:</label>
         <input
           type="email"
-          id="email"
           name="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          id="email"
+          autoComplete="email"
+          value={newUser.email}
+          onChange={(e) => handleChange(e)}
         />
 
         <label htmlFor="password">Contraseña:</label>
         <input
           type="password"
-          id="password"
           name="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
+          id="password"
+          autoComplete="password"
+          value={newUser.password}
+          onChange={(e) => handleChange(e)}
         />
 
         <button type="submit">Registrarse</button>

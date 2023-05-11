@@ -1,16 +1,28 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../Redux/Actions/index";
+import { useNavigate } from "react-router-dom";
 import "./login.css";
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(loginUser(email, password));
+    dispatch(loginUser(user));
+    navigate("/");
+  };
+
+  const handleChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
@@ -22,17 +34,19 @@ export const LoginForm = () => {
           type="email"
           id="email"
           name="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          value={user.email}
+          autoComplete="email"
+          onChange={(e) => handleChange(e)}
         />
 
         <label htmlFor="password">Contraseña:</label>
         <input
-          type="password"
           id="password"
+          type="password"
           name="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
+          value={user.password}
+          autoComplete="password"
+          onChange={(e) => handleChange(e)}
         />
 
         <button type="submit">Iniciar sesión</button>

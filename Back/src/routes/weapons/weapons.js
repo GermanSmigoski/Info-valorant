@@ -6,8 +6,8 @@ const {
 } = require("../../controller/weaponsController");
 const router = Router();
 
-router.use("/", getAllWeapons);
-router.use("/:id", getWeaponById);
-router.use("/:type/skins", getWeaponSkins);
+router.get("/", getAllWeapons);
+router.get("/:name", getWeaponById);
+router.get("/:type/skins", getWeaponSkins);
 
 module.exports = router;
