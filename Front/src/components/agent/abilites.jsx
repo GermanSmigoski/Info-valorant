@@ -19,8 +19,9 @@ const Abilities = ({ abilities }) => {
         gap: "16px",
       }}
     >
+      <h2>Habilidades:</h2>
       {abilities?.map((ability, index) => (
-        <div key={index}>
+        <div className="abilities-container" key={index}>
           <img
             src={ability[3]}
             alt=""
