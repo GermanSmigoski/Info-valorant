@@ -63,11 +63,27 @@ export const loginUser = (email, password) => async (dispatch) => {
     });
     dispatch({
       type: "USER_LOGIN",
-      payolad: response,
+      payolad: response.data,
     });
   } catch (e) {
     dispatch({
       type: "USER_LOGIN_ERROR",
+      payaload: "Error al logearse",
+    });
+  }
+};
+
+//Agents
+export const getAgentByName = (name) => async (dispatch) => {
+  try {
+    let response = await axios(`http://localhost:4000/agents/${name}`);
+    dispatch({
+      type: "GET_AGENT_NAME",
+      payload: response.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: "GET_AGENT_NAME_ERROR",
       payaload: "Error al logearse",
     });
   }

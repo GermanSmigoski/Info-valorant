@@ -1,6 +1,7 @@
 const intialState = {
   user: [],
   weapons: [],
+  agent: [],
 };
 
 const rootReducer = (state = intialState, action) => {
@@ -21,6 +22,12 @@ const rootReducer = (state = intialState, action) => {
       return {
         ...state,
         user: action.payload,
+      };
+    }
+    case "GET_AGENT_NAME": {
+      return {
+        ...state,
+        agent: action.payload,
       };
     }
     default:
