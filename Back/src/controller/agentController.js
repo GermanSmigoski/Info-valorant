@@ -18,6 +18,32 @@ const getApiAgents = async () => {
   return agents;
 };
 
+const getOneAgent = async () => {
+  const response = await axios(
+    "https://valorant-api.com/v1/agents?language=es-MX&isPlayableCharacter=true"
+  );
+
+  const agent = response.data.data.map((a) => {
+    return {
+      uuid: a.uui,
+      name: a.displayName,
+      description: a.description,
+      agentImage: a.displayIcon,
+      agentBanner: a.fullPortrait,
+      background: a.background,
+      backgroundGradient: a.backgroundGradientColors,
+      role: [a.role.displayName, a.role.description, a.role.displayIcon],
+      abilities: a.abilities.map((a) => [
+        a.slot,
+        a.displayName,
+        a.description,
+        a.displayIcon,
+      ]),
+    };
+  });
+  return agent;
+};
+
 module.exports = {
   getAllAgents: async (req, res) => {
     try {
@@ -34,7 +60,7 @@ module.exports = {
     const name = req.params.name;
 
     try {
-      const agents = await getApiAgents();
+      const agents = await getOneAgent();
 
       if (!agents) {
         return res.status(404).send("Agents not found");
@@ -43,7 +69,7 @@ module.exports = {
       const agentFiltered = agents.find(
         (a) => a.name.toLowerCase() === name.toLowerCase()
       );
-      
+
       if (!agentFiltered) return res.status(404).send("Agent not found");
 
       res.status(200).send(agentFiltered);

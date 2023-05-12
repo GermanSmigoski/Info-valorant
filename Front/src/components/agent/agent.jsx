@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAgentByName } from "../../Redux/Actions";
+import Abilities from "./abilites.jsx";
 
 export const Agent = () => {
   const { nombre } = useParams();
@@ -11,6 +12,7 @@ export const Agent = () => {
   }, [dispatch, nombre]);
 
   const agent = useSelector((state) => state.agent);
+  console.log(agent.abilities);
   return (
     <div>
       {agent ? (
@@ -19,7 +21,6 @@ export const Agent = () => {
           <p>{agent.description}</p>
           <img src={agent.agentImage} alt="" />
           <img src={agent.agentBanner} alt="" />
-          <div style={{ backgroundImage: `url(${agent.background})` }}></div>
           {agent.role && (
             <div>
               <h3>{agent.role[0]}</h3>
@@ -27,21 +28,9 @@ export const Agent = () => {
               <img src={agent.role[2]} alt="" style={{ filter: "invert(1)" }} />
             </div>
           )}
-
-          <div>
-            {agent.abilities?.map((ability) => (
-              <div key={ability[0]}>
-                <h3>{ability ? ability[0] : ""}</h3>
-                <p>{ability ? ability[1] : ""}</p>
-                <p>{ability ? ability[2] : ""}</p>
-                <img
-                  src={ability ? ability[3] : ""}
-                  alt=""
-                  style={{ filter: "invert(1)" }}
-                />
-              </div>
-            ))}
-          </div>
+          {agent && agent.abilities ? (
+            <Abilities abilities={agent.abilities} />
+          ) : null}
         </div>
       ) : (
         <h1>Loading..</h1>
