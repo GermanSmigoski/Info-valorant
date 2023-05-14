@@ -14,32 +14,30 @@ export const Agent = () => {
   }, [dispatch, nombre]);
 
   const agent = useSelector((state) => state.agent);
-  console.log(agent);
   const grad = agent.backgroundGradient || ["grey", "grey", "grey"];
+  console.log(grad[3])
 
   return (
-    <div
-      style={{
-        background: `linear-gradient(${grad[0]}, ${grad[1]}, ${grad[2]})`,
-      }}
+    <section
       className="agent-container"
+      style={{
+        backgroundImage: `linear-gradient(#${grad[0]},#${grad[1]},#${grad[2]},#${grad[3]})`,
+      }}
     >
-      {agent ? (
-        <div className="agent-details">
-          <div>
+      <div className="agent-details">
+        <div>
+          <article>
             <h2>{agent.name}</h2>
             <img className="agent-face" src={agent.agentImage} alt="" />
-            <p>{agent.description}</p>
-            <Role role={agent.role} />
-            <Abilities abilities={agent.abilities} />
-          </div>
-          <div className="background-image">
-            <img src={agent.agentBanner} alt="" />
-          </div>
+          </article>
+          <p>{agent.description}</p>
+          <Role role={agent.role} />
+          <Abilities abilities={agent.abilities} />
         </div>
-      ) : (
-        <h1>Loading..</h1>
-      )}
-    </div>
+        <div className="background-image">
+          <img src={agent.agentBanner} alt="" />
+        </div>
+      </div>
+    </section>
   );
 };

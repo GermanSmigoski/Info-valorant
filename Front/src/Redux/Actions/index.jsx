@@ -84,7 +84,22 @@ export const getAgentByName = (name) => async (dispatch) => {
   } catch (e) {
     dispatch({
       type: "GET_AGENT_NAME_ERROR",
-      payaload: "Error al logearse",
+      payaload: "Error al buscar personaje",
+    });
+  }
+};
+
+export const getAllAgents = () => async (dispatch) => {
+  try {
+    let response = await axios("http://localhost:4000/agents");
+    dispatch({
+      type: "GET_ALL_AGENTS",
+      payload: response.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: "GET_AGENT_ERROR",
+      payaload: "Error al obtener los personajes",
     });
   }
 };

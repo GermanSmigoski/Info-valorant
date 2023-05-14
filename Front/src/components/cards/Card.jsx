@@ -1,40 +1,22 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllAgents } from "../../Redux/Actions";
 import "./Card.css";
 
 export const Card = () => {
-  const [agents, setAgents] = useState([]);
-  const [open, setOpen] = useState(true);
-
+  const dispatch = useDispatch();
   useEffect(() => {
-    axios
-      .get(
-        "https://valorant-api.com/v1/agents?language=es-MX&isPlayableCharacter=true"
-      )
-      .then((response) => {
-        setAgents(response.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    dispatch(getAllAgents());
   }, []);
-
+  const agents = useSelector((state) => state.agents);
+  console.log(agents);
   return (
     <div className="card-grid">
       {agents.map((agent) => (
         <div key={agent.uuid} className="card">
-          <div className='card-inner'>
-            <div className="card-front">
-              <img className="card-img" src={agent.displayIcon} alt="" />
-              <h2 className="card-title">{agent.displayName}</h2>
-              <button onClick={() => setOpen(false)}>More info</button>
-            </div>
-            <div className="card-back">
-              <h2 className="card-title-back">{agent.displayName}</h2>
-              <img className="big-img" src={agent.fullPortrait} alt="" />
-              <p>{agent.description}</p>
-              <button onClick={() => setOpen(true)}>Back</button>
-            </div>
+          <div className="card-back">
+            <h2 className="card-title-back">{agent.name}</h2>
+            <img className="big-img" src={agent?.agentImage} alt="" />
           </div>
         </div>
       ))}

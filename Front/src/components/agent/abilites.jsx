@@ -19,16 +19,22 @@ const Abilities = ({ abilities }) => {
         gap: "16px",
       }}
     >
-      <h2>Habilidades:</h2>
+      <h2 style={{color: 'white'}}>Habilidades:</h2>
       {abilities?.map((ability, index) => (
         <div className="abilities-container" key={index}>
           <img
             src={ability[3]}
             alt=""
-            style={{ filter: "invert(1)", margin: "5px", cursor: "pointer" }}
+            style={{ margin: "5px", cursor: "pointer" }}
             onClick={() => handleAbilityClick(index)}
           />
-          <div>{selectedAbility === index && <p>{ability[2]}</p>}</div>
+          <div>
+            {selectedAbility === index && (
+              <ul>
+                <li>{ability[2]}</li>
+              </ul>
+            )}
+          </div>
         </div>
       ))}
     </div>

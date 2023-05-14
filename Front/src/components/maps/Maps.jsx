@@ -10,8 +10,6 @@ export const Maps = () => {
       .then((data) => setMaps(data.data));
   }, []);
 
-  console.log(maps);
-
   return (
     <div className="card-grid">
       {maps.map((map) => (
