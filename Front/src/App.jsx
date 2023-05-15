@@ -8,7 +8,7 @@ import {
   LoginForm,
   Register,
   Home,
-  Agent,
+  CardAgent,
 } from "./Components";
 import { AboutMe } from "./Components/aboutMe/About";
 import { Header, Footer } from "./layout";
@@ -27,7 +27,7 @@ function App() {
         <Route exact path="/sobreMi" element={<AboutMe />} />
         <Route exact path="/login" element={<LoginForm />} />
         <Route exact path="/register" element={<Register />} />
-        <Route exact path="/personajes/:nombre" element={<Agent />} />
+        <Route exact path="/personajes/:nombre" element={<CardAgent />} />
       </Routes>
       <Footer />
     </BrowserRouter>

@@ -13,31 +13,29 @@ const Abilities = ({ abilities }) => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        padding: "8px",
-        gap: "16px",
-      }}
-    >
-      <h2 style={{ color: "white" }}>Habilidades:</h2>
-      {abilities?.map((ability, index) => (
-        <div className="abilities-container" key={index}>
-          <img
-            src={ability[3] ? ability[3] : defaultImage}
-            alt=""
-            style={{ margin: "5px", cursor: "pointer" }}
-            onClick={() => handleAbilityClick(index)}
-          />
-          <div>
-            {selectedAbility === index && (
-              <ul>
-                <li>{ability[2]}</li>
-              </ul>
-            )}
+    <div>
+      <h1 style={{ color: "white" }}>Habilidades:</h1>
+      <hr />
+      <div style={{ display: "flex" }}>
+        {abilities?.map((ability, index) => (
+          <div className="abilities-container" key={index}>
+            <img
+              src={ability[3] ? ability[3] : defaultImage}
+              alt=""
+              style={{ margin: "5px", cursor: "pointer" }}
+              onClick={() => handleAbilityClick(index)}
+            />
+            <div>
+              <hr />
+              {selectedAbility === index && (
+                <ul>
+                  <li>{ability[2]}</li>
+                </ul>
+              )}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

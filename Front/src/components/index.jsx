@@ -7,4 +7,4 @@ export * from "./aboutMe/About";
 export * from "./login/login";
 export * from "./register/register";
 export * from "./landingPage/landing";
-export * from "./agent/agent";
+export * from "./agent/card";

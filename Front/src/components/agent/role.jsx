@@ -3,12 +3,14 @@ import React from "react";
 const Role = ({ role }) => {
   return (
     <div>
+      <h1>Rol:</h1>
+      <hr />
       {role && (
-        <div>
+        <article className="role">
           <h3>{role[0]}</h3>
-          <img src={role[2]} alt="" style={{ filter: "invert(1)" }} />
           <p>{role[1]}</p>
-        </div>
+          <img src={role[2]} alt="" />
+        </article>
       )}
     </div>
   );
