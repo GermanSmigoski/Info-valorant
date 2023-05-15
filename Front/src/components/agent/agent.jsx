@@ -15,7 +15,6 @@ export const Agent = () => {
 
   const agent = useSelector((state) => state.agent);
   const grad = agent.backgroundGradient || ["grey", "grey", "grey"];
-  console.log(grad[3])
 
   return (
     <section
@@ -26,11 +25,11 @@ export const Agent = () => {
     >
       <div className="agent-details">
         <div>
-          <article>
-            <h2>{agent.name}</h2>
+          <article className="topPart">
             <img className="agent-face" src={agent.agentImage} alt="" />
+            <p>{agent.description}</p>
+            <h2>{agent.name}</h2>
           </article>
-          <p>{agent.description}</p>
           <Role role={agent.role} />
           <Abilities abilities={agent.abilities} />
         </div>

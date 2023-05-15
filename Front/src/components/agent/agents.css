@@ -32,3 +32,15 @@
   height: 85vh;
   width: auto;
 }
+
+.topPart {
+  display: flex;
+  padding: 8px;
+  margin: 16px;
+  justify-content: space-between;
+  color: white;
+}
+
+.topPart img {
+  border: 3px solid whitesmoke;
+}
