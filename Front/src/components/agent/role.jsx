@@ -1,17 +1,14 @@
 import React from "react";
 
-const Role = ({ role }) => {
+const Role = ({ name, image, description }) => {
   return (
     <div>
-      <h1>Rol:</h1>
+      <h1>Rol: {name}</h1>
       <hr />
-      {role && (
-        <article className="role">
-          <h3>{role[0]}</h3>
-          <p>{role[1]}</p>
-          <img src={role[2]} alt="" />
-        </article>
-      )}
+      <article className="role">
+        <img src={image} alt="" />
+        <p>{description}</p>
+      </article>
     </div>
   );
 };

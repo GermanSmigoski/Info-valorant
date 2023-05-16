@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getAgentByName } from "../../Redux/Actions";
+import { getAgentByName, getAllAgents } from "../../Redux/Actions";
 import Abilities from "./abilites.jsx";
 import Role from "./role";
 import Agent from "./agent";
@@ -10,12 +10,32 @@ import "./agents.css";
 export const CardAgent = () => {
   const { nombre } = useParams();
   const dispatch = useDispatch();
+  const [currentAgentIndex, setCurrentAgentIndex] = useState(0);
   useEffect(() => {
-    dispatch(getAgentByName(nombre));
-  }, [dispatch, nombre]);
+    dispatch(getAgentByName(nombre), getAllAgents());
+  }, []);
 
   const agent = useSelector((state) => state.agent);
-  const grad = agent.backgroundGradient || ["grey", "grey", "grey"];
+  const allAgents = useSelector((state) => state.agents);
+  const grad = agent?.backgroundGradient || ["grey", "grey", "grey"];
+  const allAgentsName = allAgents.map((a) => a.name);
+
+  const nextAgent = async () => {
+    const nextAgentIndex = (currentAgentIndex + 1) % allAgents.length;
+    if (allAgentsName[nextAgentIndex] === agent.name) return;
+    setCurrentAgentIndex(nextAgentIndex);
+    const nextAgentName = allAgentsName[nextAgentIndex];
+    dispatch(getAgentByName(nextAgentName));
+  };
+  const pastAgent = async () => {
+    const previousAgentIndex =
+      (currentAgentIndex - 1 + allAgents.length) % allAgents.length;
+    if (previousAgentIndex === currentAgentIndex) return;
+    setCurrentAgentIndex(previousAgentIndex);
+
+    const previousAgent = allAgentsName[previousAgentIndex];
+    dispatch(getAgentByName(previousAgent));
+  };
 
   return (
     <div>
@@ -28,17 +48,25 @@ export const CardAgent = () => {
         <div className="agent-details">
           <div>
             <Agent
-              name={agent.name}
-              image={agent.agentImage}
-              description={agent.description}
+              name={agent?.name}
+              image={agent?.agentImage}
+              description={agent?.description}
             />
-            <Role role={agent.role} />
-            <Abilities abilities={agent.abilities} />
+            {agent?.role && (
+              <Role
+                name={agent.role[0]}
+                description={agent.role[1]}
+                image={agent.role[2]}
+              />
+            )}
+            <Abilities abilities={agent?.abilities} />
           </div>
           <div className="background-image">
-            <img src={agent.agentBanner} alt="" />
+            <img className="agent-banner" src={agent?.agentBanner} alt="" />
           </div>
         </div>
+        <button onClick={pastAgent}>Past Agent</button>
+        <button onClick={nextAgent}>Next Agent</button>
       </section>
     </div>
   );
