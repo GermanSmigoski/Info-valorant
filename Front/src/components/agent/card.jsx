@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAgentByName, getAllAgents } from "../../Redux/Actions";
 import Abilities from "./abilites.jsx";
@@ -10,6 +10,7 @@ import "./agents.css";
 export const CardAgent = () => {
   const { nombre } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [currentAgentIndex, setCurrentAgentIndex] = useState(0);
   useEffect(() => {
     dispatch(getAgentByName(nombre), getAllAgents());
@@ -26,6 +27,7 @@ export const CardAgent = () => {
     setCurrentAgentIndex(nextAgentIndex);
     const nextAgentName = allAgentsName[nextAgentIndex];
     dispatch(getAgentByName(nextAgentName));
+    navigate(`/personajes/${nextAgentName}`);
   };
   const pastAgent = async () => {
     const previousAgentIndex =
@@ -35,6 +37,7 @@ export const CardAgent = () => {
 
     const previousAgent = allAgentsName[previousAgentIndex];
     dispatch(getAgentByName(previousAgent));
+    navigate(`/personajes/${previousAgent}`);
   };
 
   return (
