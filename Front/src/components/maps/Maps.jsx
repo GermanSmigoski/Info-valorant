@@ -1,33 +1,34 @@
-import { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllMaps } from "../../Redux/Actions/";
 import "./Maps.css";
+import AllMaps from "./allMaps.jsx";
+import MapCarrousel from "./mapCarrousel.jsx";
 
 export const Maps = () => {
-  const [maps, setMaps] = useState([]);
-
+  const dispatch = useDispatch();
   useEffect(() => {
-    fetch("https://valorant-api.com/v1/maps")
-      .then((response) => response.json())
-      .then((data) => setMaps(data.data));
+    dispatch(getAllMaps());
   }, []);
-
+  const maps = useSelector((state) => state.maps);
   return (
-    <div className="card-grid">
-      {maps.map((map) => (
-        <div className="card map-card">
-          <div
-            className="card-inner"
-            style={{
-              backgroundImage: "url(" + `${map.splash}` + ")",
-              backgroundSize: "cover",
-              borderRadius: "16px",
-            }}
-          >
-            <h2 className="card-title">{map.displayName}</h2>
-          </div>
-          <h2 className="card-title">{map.displayName}</h2>
-          <p>{map.description}</p>
-        </div>
-      ))}
+    <div>
+      {maps.map((map) => {
+        <div>
+          <AllMaps
+            id={map.id}
+            name={map.name}
+            image={map.image}
+            icon={map.icon}
+          />
+          <MapCarrousel
+            id={map.id}
+            name={map.name}
+            image={map.image}
+            icon={map.icon}
+          />
+        </div>;
+      })}
     </div>
   );
 };

@@ -11,7 +11,6 @@ export const Card = () => {
     dispatch(getAllAgents());
   }, []);
 
-  const showBanner = () => {};
 
   const agents = useSelector((state) => state.agents);
 

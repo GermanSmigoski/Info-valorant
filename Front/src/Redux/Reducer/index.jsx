@@ -3,6 +3,7 @@ const intialState = {
   weapons: [],
   agent: [],
   agents: [],
+  maps: [],
 };
 
 const rootReducer = (state = intialState, action) => {
@@ -32,10 +33,16 @@ const rootReducer = (state = intialState, action) => {
       };
     }
     case "GET_ALL_AGENTS": {
-      return{
+      return {
         ...state,
         agents: action.payload,
-      }
+      };
+    }
+    case "GET_ALL_MAPS": {
+      return {
+        ...state,
+        maps: action.payload,
+      };
     }
     default:
       return state;

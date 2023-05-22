@@ -103,3 +103,20 @@ export const getAllAgents = () => async (dispatch) => {
     });
   }
 };
+
+// Maps
+
+export const getAllMaps = () => async (dispatch) => {
+  try {
+    let response = await axios("http://localhost:4000/maps");
+    dispatch({
+      type: "GET_ALL_MAPS",
+      payload: response.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: "GET_MAPS_ERROR",
+      payaload: "Error al obtener los mapas",
+    });
+  }
+};
