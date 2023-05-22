@@ -13,22 +13,17 @@ export const Maps = () => {
   const maps = useSelector((state) => state.maps);
   return (
     <div>
-      {maps.map((map) => {
-        <div>
+      {maps.map((map) => (
+        <div key={map.id}>
           <AllMaps
             id={map.id}
             name={map.name}
             image={map.image}
             icon={map.icon}
           />
-          <MapCarrousel
-            id={map.id}
-            name={map.name}
-            image={map.image}
-            icon={map.icon}
-          />
-        </div>;
-      })}
+        </div>
+      ))}
+      <MapCarrousel maps={maps} />
     </div>
   );
 };
