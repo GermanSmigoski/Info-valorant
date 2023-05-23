@@ -6,11 +6,24 @@ import "./Card.css";
 
 export const Card = () => {
   const [displayBanner, setDisplayBanner] = useState(null);
+  const [showBanner, setShowBanner] = useState(false);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllAgents());
   }, []);
 
+  const handleImageClick = (agent) => {
+    setDisplayBanner(agent);
+    setShowBanner(true);
+  };
+  useEffect(() => {
+    if (showBanner) {
+      setTimeout(() => {
+        setShowBanner(false);
+      }, 500);
+    }
+  }, [showBanner]);
 
   const agents = useSelector((state) => state.agents);
 
@@ -18,9 +31,9 @@ export const Card = () => {
     <div className="card-container">
       <div className="card-grid">
         {agents.map((agent) => (
-          <div key={agent.uuid} className="card">
+          <div key={agent.uuid} className="card-agent">
             <img
-              onClick={() => setDisplayBanner(agent)}
+              onClick={() => handleImageClick(agent)}
               className="character-img"
               src={agent?.agentImage}
               alt=""
@@ -33,7 +46,9 @@ export const Card = () => {
       </div>
       <div className="full-banner">
         {displayBanner && (
-          <div className="selected-agent">
+          <div
+            className={`selected-agent ${showBanner ? "animated-slideIn" : ""}`}
+          >
             <img src={displayBanner.agentBanner} alt="" />
             <h2>{displayBanner.name}</h2>
           </div>

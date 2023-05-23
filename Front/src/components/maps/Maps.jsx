@@ -15,14 +15,14 @@ export const Maps = () => {
 
   return (
     <div className="maps-container">
-      <div class='maps-buttons'>
-        <button onClick={() => setIsActivate(false)}>Todas</button>
-        <button onClick={() => setIsActivate(true)}>Una</button>
+      <div class="maps-buttons">
+        <button onClick={() => setIsActivate(true)}>Todas</button>
+        <button onClick={() => setIsActivate(false)}>Una</button>
       </div>
       {isActivate && isActivate ? (
-        <MapCarrousel maps={maps} />
-      ) : (
         <AllMaps maps={maps} />
+      ) : (
+        <MapCarrousel maps={maps} />
       )}
     </div>
   );

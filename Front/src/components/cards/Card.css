@@ -1,7 +1,7 @@
-.card-container{
+.card-container {
   display: flex;
   height: 100vh;
-  background-color: #1e1e1e
+  background-color: #1e1e1e;
 }
 .card-grid {
   display: flex;
@@ -12,7 +12,7 @@
   margin: 0;
 }
 
-.card {
+.card-agent {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,7 +34,34 @@
   width: 100%;
 }
 
-.selected-agent img{
+.selected-agent img {
   width: auto;
   height: 90vh;
+}
+
+.full-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-banner h2{
+  width: 100%;
+  background-color: #9e9c9c;
+  text-align: center;
+}
+
+.selected-agent.animated-slideIn {
+  animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
