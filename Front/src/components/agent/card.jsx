@@ -39,7 +39,6 @@ export const CardAgent = () => {
     dispatch(getAgentByName(previousAgent));
     navigate(`/personajes/${previousAgent}`);
   };
-
   return (
     <div>
       <section
@@ -55,13 +54,16 @@ export const CardAgent = () => {
               image={agent?.agentImage}
               description={agent?.description}
             />
-            {agent?.role && (
-              <Role
-                name={agent.role[0]}
-                description={agent.role[1]}
-                image={agent.role[2]}
-              />
-            )}
+            {agent &&
+              agent.role &&
+              agent.role.map((rol) => (
+                <Role
+                  name={rol.name}
+                  description={rol.description}
+                  image={rol.image}
+                />
+              ))}
+
             <Abilities abilities={agent?.abilities} />
           </div>
           <div className="background-image">

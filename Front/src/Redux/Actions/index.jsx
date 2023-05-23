@@ -104,6 +104,20 @@ export const getAllAgents = () => async (dispatch) => {
   }
 };
 
+export const roleFilter = (payload) => {
+  try {
+    return {
+      type: "ROLE_FILTER",
+      payload,
+    };
+  } catch (e) {
+    return {
+      type: "ROLE_FILTER_ERROR",
+      payload: "Error al cargar el filtro por roles",
+    };
+  }
+};
+
 // Maps
 
 export const getAllMaps = () => async (dispatch) => {

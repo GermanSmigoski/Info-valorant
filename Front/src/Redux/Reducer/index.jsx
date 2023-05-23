@@ -3,6 +3,7 @@ const intialState = {
   weapons: [],
   agent: [],
   agents: [],
+  agentsAux: [],
   maps: [],
 };
 
@@ -36,12 +37,21 @@ const rootReducer = (state = intialState, action) => {
       return {
         ...state,
         agents: action.payload,
+        agentsAux: action.payload,
       };
     }
     case "GET_ALL_MAPS": {
       return {
         ...state,
         maps: action.payload,
+      };
+    }
+    case "ROLE_FILTER": {
+      let allAgents = state.agentsAux;
+      let roleFiltered = allAgents.filter(rol => rol.name)
+      return {
+        ...state,
+        agents: action.payload,
       };
     }
     default:

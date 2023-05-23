@@ -20,16 +20,17 @@ const Abilities = ({ abilities }) => {
         {abilities?.map((ability, index) => (
           <div className="abilities-container" key={index}>
             <img
-              src={ability[3] ? ability[3] : defaultImage}
+              src={ability.image ? ability.image : defaultImage}
               alt=""
-              style={{ margin: "5px", cursor: "pointer" }}
+              style={{ margin: "7px", cursor: "pointer" }}
               onClick={() => handleAbilityClick(index)}
             />
             <div>
+              <h2>{ability.name}</h2>
               <hr />
               {selectedAbility === index && (
                 <ul>
-                  <li>{ability[2]}</li>
+                  <li>{ability.description}</li>
                 </ul>
               )}
             </div>
