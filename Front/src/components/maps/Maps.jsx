@@ -15,7 +15,7 @@ export const Maps = () => {
 
   return (
     <div className="maps-container">
-      <div class="maps-buttons">
+      <div className="maps-buttons">
         <button onClick={() => setIsActivate(true)}>Todas</button>
         <button onClick={() => setIsActivate(false)}>Una</button>
       </div>

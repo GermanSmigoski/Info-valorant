@@ -18,12 +18,30 @@
   align-items: center;
   flex-direction: column;
   height: fit-content;
+  border: 2px solid #ccc1c1;
+  background-color: #1e1e1e;
+  min-width: 130px;
+  text-decoration: none;
+}
+
+.card-agent h2 {
+  color: #ff3341b7;
 }
 
 .character-img {
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
   object-fit: cover;
+  filter: grayscale(100%);
+  cursor: pointer;
+}
+
+.character-img:hover {
+  filter: grayscale(0%);
+}
+
+.character-img selected {
+  filter: none;
 }
 
 .card-title-back {
@@ -45,7 +63,7 @@
   align-items: center;
 }
 
-.full-banner h2{
+.full-banner h2 {
   width: 100%;
   background-color: #9e9c9c;
   text-align: center;
