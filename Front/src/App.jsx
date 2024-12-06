@@ -12,6 +12,8 @@ import {
 } from "./Components";
 import { AboutMe } from "./Components/aboutMe/About";
 import { Header, Footer } from "./layout";
+import '@mantine/core/styles.css';
+import '@mantine/carousel/styles.css';
 
 function App() {
   return (

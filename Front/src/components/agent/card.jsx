@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAgentByName, getAllAgents } from "../../Redux/Actions";
 import Abilities from "./abilites.jsx";
 import Role from "./role";
-import Agent from "./agent";
 import "./agents.css";
 
 export const CardAgent = () => {

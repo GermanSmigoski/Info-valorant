@@ -1,6 +1,7 @@
 import React from "react";
 
 const Agent = ({ name, image, description }) => {
+
   return (
     <div>
       <h1>{`Personaje: ${name}`}</h1>
