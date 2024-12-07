@@ -1,19 +1,19 @@
 import React from "react";
 import { IconArrowRight, IconArrowLeft } from '@tabler/icons-react';
 import { Carousel } from '@mantine/carousel';
-import { rem } from '@mantine/core';
-import { Flex, Title, Image } from "@mantine/core";
+import { rem, Flex, Title, Image } from '@mantine/core';
 
 export const AgentCarousel = ({ agents, setSelectedAgent }) => {
     return (
         <Carousel
-            mb={30}
             height="auto"
             slideSize="20%"
             slideGap="md"
             loop
             align="start"
             slidesToScroll={3}
+            maw="90%"
+            style={{ margin: '0 auto', marginBottom: "30px" }}
             nextControlIcon={<IconArrowRight style={{ width: rem(16), height: rem(16) }} />}
             previousControlIcon={<IconArrowLeft style={{ width: rem(16), height: rem(16) }} />}
             styles={{
@@ -81,5 +81,5 @@ export const AgentCarousel = ({ agents, setSelectedAgent }) => {
                 </Carousel.Slide>
             ))}
         </Carousel>
-    )
-}
+    );
+};

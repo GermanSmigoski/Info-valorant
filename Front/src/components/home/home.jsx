@@ -11,7 +11,6 @@ export const Home = () => {
           <p>
             Descubre los personajes, mapas y armas más impresionantes del juego.
           </p>
-          {/* <button>Regístrate ahora</button> */}
         </div>
       </section>
       <section className="features">

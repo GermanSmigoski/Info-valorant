@@ -24,9 +24,9 @@ export const Abilities = ({ abilities }) => {
             style={{
                 position: "absolute",
                 top: "70px",
-                right: "20px",
+                right: "90px",
                 padding: "16px",
-                maxWidth: "300px",
+                maxWidth: "340px",
                 backgroundColor: "#1f1f1f",
                 border: "1px solid #333",
                 borderRadius: "8px",
