@@ -1,10 +1,13 @@
 const intialState = {
-  user: [],
   weapons: [],
   agent: [],
   agents: [],
   agentsAux: [],
   maps: [],
+  loading: {
+    maps: false,
+    weapons: false,
+  },
 };
 
 const rootReducer = (state = intialState, action) => {
@@ -13,18 +16,16 @@ const rootReducer = (state = intialState, action) => {
       return {
         ...state,
         weapons: action.payload,
+        loading: {
+          ...state.loading,
+          weapons: false,
+        },
       };
     }
-    case "USER_REGISTER": {
+    case "GET_WEAPONS_NAME": {
       return {
         ...state,
-        user: action.payload,
-      };
-    }
-    case "USER_LOGIN": {
-      return {
-        ...state,
-        user: action.payload,
+        weapons: action.payload,
       };
     }
     case "GET_AGENT_NAME": {
@@ -44,11 +45,31 @@ const rootReducer = (state = intialState, action) => {
       return {
         ...state,
         maps: action.payload,
+        loading: {
+          ...state.loading,
+          maps: false,
+        },
+      };
+    }
+    case "LOADING_MAPS": {
+      return {
+        ...state,
+        loading: {
+          ...state.loading,
+          maps: true,
+        },
+      };
+    }
+    case "LOADING_WEAPONS": {
+      return {
+        ...state,
+        loading: {
+          ...state.loading,
+          weapons: true,
+        },
       };
     }
     case "ROLE_FILTER": {
-      let allAgents = state.agentsAux;
-      let roleFiltered = allAgents.filter(rol => rol.name)
       return {
         ...state,
         agents: action.payload,
